@@ -204,7 +204,6 @@ app.post("/api/garage/both", function(req, res) {
 	]);
 });
 
-app.listen(app.get('port'));
 app.listen(app.get('port'), function(){
 	console.log("Server listening on port 3000...");
 });

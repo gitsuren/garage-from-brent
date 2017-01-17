@@ -6,12 +6,38 @@ var express = require('express'),
 	email = require('./lib/email'),
 	propertiesReader = require('properties-reader'),
 	app = express();
+	//passport = require('passport');
+	//Strategy = require('passport-facebook').Strategy;
 
 //app.set('port', process.env.PORT || 3000);
 var properties = propertiesReader('./properties/app.properties');
 app.set('port', properties.get('app.port'));
 
-app.use('/', express.static(__dirname + '/public'));
+
+// Madan's Code
+
+// Configure view engine to render EJS templates.
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
+// Define routes.
+app.get('/',
+  function(req, res) {
+    res.render('home');
+  });
+
+app.get('/login',
+  function(req, res) {
+    res.render('login');
+  });
+
+app.get('/dashboard',
+  function(req, res) {
+    res.render('dashboard');
+  });
+
+
+//app.use('/', express.static(__dirname + '/public'));
 
 app.get('/email', function(req, res) {
 	email.sendEmail(properties.get('app.api.key'), properties.get('app.email.to'), properties.get('app.email.from'));
@@ -133,3 +159,6 @@ app.post("/api/garage/both", function(req, res) {
 });
 
 app.listen(app.get('port'));
+app.listen(app.get('port'), function(){
+	console.log("Server listening on port 3000...");
+});

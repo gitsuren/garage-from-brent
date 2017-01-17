@@ -1,0 +1,9 @@
+Welcome to Garage!!
+
+<% if (!user) { %>
+	<p>Please <a href="/login">Log In</a></p>    
+<% } else { %>
+	<p>Hello, <%= user.displayName %>. </br>
+    Go to your <a href="/dashboard">Garage Dashboard</a>.</p>    	
+<% } %>
+

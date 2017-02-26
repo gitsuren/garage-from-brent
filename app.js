@@ -107,8 +107,8 @@ app.post("/api/garage/left", function(req, res) {
 		function(callback) {
 			// Open pin for output
 			console.log('Open pin for output');
-			gpio.open(config.LEFT_GARAGE_PIN, "output", callback);			
-			//email.sendEmail(properties.get('app.api.key'), properties.get('app.email.to'), properties.get('app.email.from'), 'LEFT GARAGE OPENED');
+			//gpio.open(config.LEFT_GARAGE_PIN, "output", callback);			
+			email.sendEmail(properties.get('app.api.key'), properties.get('app.email.to'), properties.get('app.email.from'), 'LEFT GARAGE OPENED');
 		},
 		function(callback) {
 			// Turn the relay on

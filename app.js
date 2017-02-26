@@ -17,8 +17,10 @@ app.set('port', properties.get('app.port'));
 // Madan's Code
 
 passport.use(new Strategy({
-    clientID: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
+    //clientID: process.env.CLIENT_ID,
+		clientID: properties.get('app.fb.client.id'),
+    //clientSecret: process.env.CLIENT_SECRET,
+		clientSecret: properties.get('app.fb.client.secret'),
     callbackURL: 'http://localhost:3000/login/facebook/return'
   },
   function(accessToken, refreshToken, profile, cb) {
